@@ -1,0 +1,115 @@
+/* ===== Reset general ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== Layout general ===== */
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* ===== Header ===== */
+header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease;
+}
+
+header img {
+    border-radius: 50%;
+    border: 4px solid #00c6ff;
+    box-shadow: 0 0 15px #00c6ff;
+    width: 150px;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #00c6ff;
+    text-shadow: 0 0 10px #00c6ff;
+}
+
+header h2 {
+    font-size: 1.2rem;
+    color: #f0db4f;
+}
+
+/* ===== Secciones ===== */
+section {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    animation: slideUp 1s ease forwards;
+    opacity: 0;
+}
+
+/* Efecto hover */
+section:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+/* Títulos */
+section h3 {
+    margin-bottom: 10px;
+    color: #00c6ff;
+    border-bottom: 2px solid #00c6ff;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Listas */
+ul {
+    list-style: none;
+    margin-left: 10px;
+}
+
+ul li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+/* Icono tipo bullet personalizado */
+ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #f0db4f;
+    font-weight: bold;
+}
+
+/* ===== Animaciones ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animar las secciones una por una */
+section:nth-child(2) { animation-delay: 0.3s; }
+section:nth-child(3) { animation-delay: 0.6s; }
+section:nth-child(4) { animation-delay: 0.9s; }
+section:nth-child(5) { animation-delay: 1.2s; }
+section:nth-child(6) { animation-delay: 1.5s; }

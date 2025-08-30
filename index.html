@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hoja de Vida</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <!-- Encabezado -->
-    <header>
+    <header class="presentacion">
         <div class="foto">
-            <img src="foto.jpg" alt="Foto de perfil" width="150">
+            <img src="img\foto.jpg" alt="Foto de perfil">
         </div>
         <div class="info-principal">
             <h1>Juan Pablo Rodriguez Valencia</h1>
@@ -19,15 +19,39 @@
         </div>
     </header>
 
+    <!-- Botones de navegación -->
+    <div class="botones">
+        <a href="#perfil" class="boton-redondo boton-cv">Mi CV</a>
+        <a href="#experiencia" class="boton-redondo boton-trabajo">Mi Trabajo</a>
+        <a href="#habilidades" class="boton-redondo boton-habilidades">Mis Habilidades</a>
+    </div>
+
+
     <!-- Datos de contacto -->
     <section id="contacto">
         <h3>Datos de Contacto</h3>
-        <ul>
-            <li>📧 Correo: vmrodriguez.1209@gmail.com</li>
-            <li>📱 Teléfono: +57 3196922087</li>
-            <li>📍 Dirección: Caicedonia Valle del Cauca- Colombia</li>
-            <li>🔗 LinkedIn/GitHub/Red social</li>
-        </ul>
+        <div class="contacto-cards">
+            <div class="card">
+                <span>📧</span>
+                <p>vmrodriguez.1209@gmail.com</p>
+            </div>
+            <div class="card">
+                <span>📱</span>
+                <p>+57 3196922087</p>
+            </div>
+            <div class="card">
+                <span>📍</span>
+                <p>Caicedonia, Valle del Cauca - Colombia</p>
+            </div>
+            <div class="card">
+                <span>🔗</span>
+                <p><a href="https://github.com/Juanzyy" target="_blank">GitHub</a></p>
+            </div>
+            <div class="card">
+                <span>🔗</span>
+                <p><a href="https://www.linkedin.com/in/juan-p-rodr%C3%ADguez-45202131a/" target="_blank">Linkedin</a></p>
+            </div>
+        </div>
     </section>
 
     <!-- Perfil -->
@@ -45,22 +69,30 @@
     <!-- Educación -->
     <section id="educacion">
         <h3>Educación</h3>
-        <ul>
-            <li><strong>Universidad del Valle - Sede Caicedonia</strong> – Carrera (2023 - 2026)</li>
-            <li><strong>Institucion Educativo Bolivariano </strong> – Bachillerato (2017 - 2022)</li>
-        </ul>
+        <div class="estudios">
+            <div class="card-estudio">
+                <img src="img\Univalle.jpg" alt="Logo Universidad del Valle">
+                <div>
+                    <h4>Universidad del Valle - Sede Caicedonia</h4>
+                    <p>Tecnología en Desarrollo de Software (2023 - 2026)</p>
+                </div>
+            </div>
+            <div class="card-estudio">
+                <img src="img\Colegio.jpeg" alt="Logo Colegio Bolivariano">
+                <div>
+                    <h4>Institución Educativa Bolivariano</h4>
+                    <p>Bachillerato (2017 - 2022)</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Experiencia laboral -->
     <section id="experiencia">
         <h3>Experiencia Laboral</h3>
         <ul>
-            <li><strong>Universidad</strong> 
-                Prácticas académicas.
-            </li>
-            <li><strong>Universidad</strong>
-                Proyectos universitarios.
-            </li>
+            <li><strong>Universidad</strong> – Prácticas académicas</li>
+            <li><strong>Universidad</strong> – Proyectos universitarios</li>
         </ul>
     </section>
 
@@ -70,7 +102,7 @@
         <h4>Habilidades técnicas</h4>
         <ul>
             <li>Gestión de proyectos en desarrollo de software</li>
-            <li>Conocimientos básicos en Python, Java, PHP, html y MySQL</li>
+            <li>Conocimientos básicos en Python, Java, PHP, HTML y MySQL</li>
             <li>Manejo de sistemas operativos Windows</li>
             <li>Pruebas de software</li>
         </ul>
@@ -89,7 +121,7 @@
         <h3>Idiomas</h3>
         <ul>
             <li>Español – Nativo</li>
-            <li>Inglés – Basico</li>
+            <li>Inglés – Básico</li>
         </ul>
     </section>
 
@@ -99,6 +131,10 @@
         <p>Disponibles a solicitud</p>
     </section>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Juan Pablo Rodriguez - Todos los derechos reservados</p>
+    </footer>
+
 </body>
 </html>
-

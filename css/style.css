@@ -1,0 +1,189 @@
+/* General */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background: #f0f4f8;
+    color: #333;
+}
+
+/* Encabezado */
+.presentacion {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #00bcd4, #ff3366);
+    color: white;
+}
+
+.presentacion .foto {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.presentacion .foto img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 8px solid transparent;
+    background-image: linear-gradient(45deg, #ff3366, #00bcd4, #cddc39);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.3);
+    transition: transform 0.4s ease-in-out;
+}
+
+.presentacion .foto img:hover {
+    transform: scale(1.08) rotate(-2deg);
+}
+
+/* Botones */
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.boton-redondo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    text-decoration: none;   /* quita el subrayado del enlace */
+    color: #333;             /* color inicial */
+}
+
+.boton-redondo:hover {
+    transform: scale(1.1);
+    background: #00bcd4;
+    color: white;
+}
+
+
+/* Sección contacto */
+#contacto {
+    text-align: center;
+    background: #f9f9f9;
+    padding: 60px 20px;
+}
+
+#contacto h3 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.contacto-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contacto-cards .card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 25px;
+    width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contacto-cards .card span {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.contacto-cards .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.contacto-cards .card a {
+    color: #00bcd4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contacto-cards .card a:hover {
+    text-decoration: underline;
+}
+
+.contacto-cards .card a:hover {
+    text-decoration: underline;
+}
+
+.estudios {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-estudio {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.card-estudio:hover {
+    transform: translateY(-5px);
+}
+
+.card-estudio img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+/* Secciones */
+section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+section h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #00bcd4;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background: #222;
+    color: white;
+    padding: 30px 20px;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}

@@ -17,7 +17,6 @@ body {
     background: #2f1738; /* negro oscuro */
     color: white;
     overflow: hidden;            /* oculta iconos fuera del contenedor */
-    border-radius: 15px;
 }
 
 /* Fondo con iconos flotantes */
@@ -178,56 +177,54 @@ body {
     letter-spacing: 2px;
 }
 
-/* Línea decorativa debajo del título */
-.titulo-educacion {
-    font-size: 2.5rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+/* Fondo decorativo para el contenedor principal de educación */
+#educacion {
+    background: radial-gradient(ellipse at top left, #3a3a6c 0%, #1a1a2e 60%, #0f3460 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(44, 62, 80, 0.18);
+    padding: 40px 24px;
+    margin: 32px auto;
+    max-width: 900px;
     position: relative;
-    display: inline-block;
-    animation: fadeInDown 1s cubic-bezier(.77,0,.18,1);
+    /* Simulación de estrellas */
+    overflow: hidden;
 }
 
-.titulo-educacion .ico-edu {
-    font-size: 2.2rem;
-    vertical-align: middle;
-    margin-right: 12px;
-    animation: bounceEdu 1.2s infinite;
-    color: #ff416c; /* color fijo para el emoji */
-}
-
-.titulo-educacion .texto-edu {
-    background: linear-gradient(90deg, #ff416c, #00bcd4, #cddc39);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.titulo-educacion::after {
+#educacion::before, #educacion::after {
     content: "";
-    display: block;
-    width: 70%;
-    height: 5px;
-    background: linear-gradient(90deg, #ff416c, #00bcd4, #cddc39);
-    border-radius: 3px;
-    margin: 12px auto 0 auto;
-    animation: underlineGrow 1.2s cubic-bezier(.77,0,.18,1);
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.7;
+    z-index: 1;
 }
 
-@keyframes fadeInDown {
-    0% { opacity: 0; transform: translateY(-40px);}
-    100% { opacity: 1; transform: translateY(0);}
+#educacion::before {
+    width: 3px; height: 3px;
+    top: 40px; left: 80px;
+    box-shadow: 
+        0 0 8px #fff,
+        120px 60px 2px #fff,
+        200px 120px 1px #fff,
+        400px 80px 2px #fff,
+        600px 40px 3px #fff,
+        700px 100px 2px #fff,
+        850px 60px 2px #fff,
+        300px 200px 1px #fff,
+        500px 250px 2px #fff;
 }
 
-@keyframes bounceEdu {
-    0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-12px);}
-}
-
-@keyframes underlineGrow {
-    0% { width: 0; opacity: 0;}
-    100% { width: 70%; opacity: 1;}
+#educacion::after {
+    width: 2px; height: 2px;
+    top: 180px; left: 300px;
+    box-shadow: 
+        50px 100px 1px #fff,
+        180px 220px 2px #fff,
+        350px 180px 1px #fff,
+        600px 220px 2px #fff,
+        800px 180px 1px #fff,
+        100px 300px 2px #fff,
+        400px 350px 1px #fff;
 }
 
 /* Contenedor de estudios */
@@ -302,7 +299,6 @@ body {
     height: 3px;
     background: linear-gradient(90deg, #ff416c, #ff4b2b);
     margin: 5px auto 0;
-    border-radius: 2px;
 }
 
 /* Badge de periodo académico */
@@ -441,7 +437,7 @@ html {
 
 /* Perfil Profesional */
 .perfil-profesional {
-    background: linear-gradient(90deg, #ee6969 0%, #5991e4 100%);
+    background: linear-gradient(90deg, #252525 0%, #696080 100%);
     border-radius: 18px;
     box-shadow: 0 4px 24px rgba(0, 188, 212, 0.10);
     padding: 32px 24px;
@@ -467,7 +463,7 @@ html {
 }
 
 .texto-perfil {
-    background: linear-gradient(90deg, #000000, #69040d, #360366);
+    background: linear-gradient(90deg, #b3aeae, #0720ff);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -475,20 +471,50 @@ html {
 
 .descripcion-perfil {
     font-size: 1.15rem;
-    color: #333;
+    color: #ffffff;
     line-height: 1.8;
     animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1);
 }
 
-/* Cambia el color del texto en perfil profesional, excepto el resaltado */
-.perfil-profesional .descripcion-perfil {
-    color: #000000; /* Nuevo color para el texto principal */
-}
-
 .resaltado {
-    color: #470366;
+    color: #ff0c0c;
     font-weight: 600;
     border-radius: 6px;
     margin: 0 2px;
+}
+
+/* Nuevos estilos para el perfil profesional */
+.fondo-ico-perfil {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.perfil-profesional {
+    position: relative; /* necesario para iconos flotantes internos */
+    /* ...resto de estilos... */
+}
+
+.icono-perfil {
+    position: absolute;
+    opacity: 0.18;
+    width: 48px;
+    height: 48px;
+    animation: flotarPerfil 6s infinite alternate;
+}
+
+.icono-perfil:nth-child(1) { top: 20px; left: 30px; animation-delay: 0s;}
+.icono-perfil:nth-child(2) { top: 60px; right: 40px; animation-delay: 1s;}
+.icono-perfil:nth-child(3) { bottom: 30px; left: 60px; animation-delay: 2s;}
+.icono-perfil:nth-child(4) { bottom: 60px; right: 50px; animation-delay: 1.5s;}
+.icono-perfil:nth-child(5) { top: 120px; left: 200px; animation-delay: 2.2s;}
+
+@keyframes flotarPerfil {
+    0% { transform: translateY(0) scale(1);}
+    50% { transform: translateY(-18px) scale(1.1);}
+    100% { transform: translateY(0) scale(1);}
 }
 

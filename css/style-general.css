@@ -1,0 +1,51 @@
+/* =================== GENERAL =================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background: #ffffff; 
+    background: #ffffff; 
+
+}
+
+/* =================== TITULOS DE LAS SECCIONES =================== */
+section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+section h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #00bcd4;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+
+/* =================== FOOTER/DERECHOS =================== */
+footer {
+    text-align: center;
+    background: #071538;
+    color: white;
+    padding: 30px 20px;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+
+

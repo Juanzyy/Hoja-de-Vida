@@ -1,0 +1,235 @@
+/* =================== EDUCACION =================== */
+/* ESTUDIOOOS */
+#educacion h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    color: #ff416c; /* color más llamativo */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Fondo decorativo para el contenedor principal de educación */
+#educacion {
+    background: radial-gradient(ellipse at top left, #3a3a6c 0%, #1a1a2e 60%, #0f3460 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(44, 62, 80, 0.18);
+    padding: 40px 24px;
+    margin: 32px auto;
+    max-width: 900px;
+    position: relative;
+    /* Simulación de estrellas */
+    overflow: hidden;
+}
+
+#educacion::before, #educacion::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+#educacion::before {
+    width: 3px; height: 3px;
+    top: 40px; left: 80px;
+    box-shadow: 
+        0 0 8px #fff,
+        120px 60px 2px #fff,
+        200px 120px 1px #fff,
+        400px 80px 2px #fff,
+        600px 40px 3px #fff,
+        700px 100px 2px #fff,
+        850px 60px 2px #fff,
+        300px 200px 1px #fff,
+        500px 250px 2px #fff;
+}
+
+#educacion::after {
+    width: 2px; height: 2px;
+    top: 180px; left: 300px;
+    box-shadow: 
+        50px 100px 1px #fff,
+        180px 220px 2px #fff,
+        350px 180px 1px #fff,
+        600px 220px 2px #fff,
+        800px 180px 1px #fff,
+        100px 300px 2px #fff,
+        400px 350px 1px #fff;
+}
+
+/* Contenedor de estudios */
+.estudios {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* Tarjeta de cada estudio */
+.card-estudio {
+    width: 260px;
+    text-align: center;
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Animación individual para cada tarjeta */
+.card-estudio:nth-child(1) { animation-delay: 0.2s; }
+.card-estudio:nth-child(2) { animation-delay: 0.4s; }
+/* Agregar más si hay más tarjetas */
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Imagen de la institución */
+.card-estudio .img-box {
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.card-estudio img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease;
+    border-radius: 12px;
+}
+
+.card-estudio:hover img {
+    transform: scale(1.1) rotate(-1deg);
+}
+
+/* Información del estudio */
+.info-estudio {
+    margin-top: 15px;
+}
+
+.info-estudio h4 {
+    font-size: 1.2rem;
+    color: #00bcd4;
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+}
+
+.info-estudio h4::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    margin: 5px auto 0;
+}
+
+/* Badge de periodo académico */
+.info-estudio .badge {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Descripción del estudio */
+.info-estudio p {
+    font-size: 0.95rem;
+    color: #555;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Efecto hover en la tarjeta */
+.card-estudio:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+
+/* Contenedor de barra */
+.progreso {
+    width: 100%;
+    height: 16px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    margin: 14px 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,188,212,0.10);
+    position: relative;
+}
+
+/* Barra de progreso interna mejorada */
+.progreso-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b, #00bcd4);
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 0 12px 2px #ff416c88;
+    position: relative;
+    overflow: visible;
+    animation: fillBar 1.2s cubic-bezier(.77,0,.18,1) forwards;
+    width: 0; /* Se animará con JS */
+}
+
+
+/* Efecto de brillo animado */
+.progreso-bar::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 30px;
+    background: linear-gradient(120deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 100%);
+    opacity: 0.7;
+    animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+    0% { left: -30px; }
+    100% { left: 100%; }
+}
+
+/* Animación de relleno */
+@keyframes fillBar {
+    0% { width: 0; }
+    100% { width: var(--progreso-width, 80%); }
+}
+
+/* Pulso al completar */
+.progreso-bar[data-completo="true"] {
+  /* primero se llena, luego hace el pulso con un delay de 1.2s */
+  animation: fillBar 1.2s cubic-bezier(.77,0,.18,1) forwards,
+             pulse 0.6s 1 1.2s;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 12px 2px #ff416c88; }
+    50% { box-shadow: 0 0 24px 8px #ff416c88; }
+    100% { box-shadow: 0 0 12px 2px #ff416c88; }
+}
+
+/* Texto de progreso */
+.progreso-text {
+    font-size: 0.85rem;
+    color: #555;
+    text-align: center;
+    margin-top: 4px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}

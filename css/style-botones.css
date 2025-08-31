@@ -1,0 +1,30 @@
+/* =================== BOTONES =================== */
+
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.boton-redondo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    text-decoration: none;   /* quita el subrayado del enlace */
+    color: #333;             /* color inicial */
+}
+
+.boton-redondo:hover {
+    transform: scale(1.1);
+    background: #00bcd4;
+    color: white;
+}

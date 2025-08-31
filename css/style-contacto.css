@@ -1,0 +1,139 @@
+/* =================== CONTACTO =================== */
+
+#contacto {
+    text-align: center;
+    background: radial-gradient(ellipse at top left, #3a3a6c 0%, #1a1a2e 60%, #0f3460 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(44, 62, 80, 0.18);
+    padding: 60px 20px;
+    margin: 32px auto;
+    max-width: 900px;
+    position: relative;
+    overflow: hidden;
+}
+
+#contacto::before, #contacto::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+#contacto::before {
+    width: 3px; height: 3px;
+    top: 40px; left: 80px;
+    box-shadow: 
+        0 0 8px #fff,
+        120px 60px 2px #fff,
+        200px 120px 1px #fff,
+        400px 80px 2px #fff,
+        600px 40px 3px #fff,
+        700px 100px 2px #fff,
+        850px 60px 2px #fff,
+        300px 200px 1px #fff,
+        500px 250px 2px #fff;
+}
+
+#contacto::after {
+    width: 2px; height: 2px;
+    top: 180px; left: 300px;
+    box-shadow: 
+        50px 100px 1px #fff,
+        180px 220px 2px #fff,
+        350px 180px 1px #fff,
+        600px 220px 2px #fff,
+        800px 180px 1px #fff,
+        100px 300px 2px #fff,
+        400px 350px 1px #fff;
+}
+
+#contacto h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ffffff, #00bcd4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 36px;
+}
+
+#contacto h3::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 5px;
+    background: linear-gradient(90deg, #536ad1, #00bcd4);
+    border-radius: 3px;
+    margin: 12px auto 0 auto;
+    animation: underlineGrow 1.2s cubic-bezier(.77,0,.18,1);
+}
+
+@keyframes underlineGrow {
+    0% { width: 0; opacity: 0;}
+    100% { width: 60%; opacity: 1;}
+}
+
+.contacto-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+}
+
+.contacto-cards .card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 25px;
+    width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+    color: #00c3ff;
+    font-weight: bold;
+    font-size: 1.0rem;
+    text-shadow: 0 2px 8px #000, 0 0px 2px #333; /* sombra para mejor contraste */
+    position: relative;
+}
+
+.contacto-cards .card a {
+    color: #ffe066;
+    font-weight: bold;
+    text-shadow: 0 2px 8px #000, 0 0px 2px #333;
+    text-decoration: underline;
+}
+
+
+
+.contacto-cards .card:nth-child(1) { animation-delay: 0.2s; }
+.contacto-cards .card:nth-child(2) { animation-delay: 0.4s; }
+.contacto-cards .card:nth-child(3) { animation-delay: 0.6s; }
+.contacto-cards .card:nth-child(4) { animation-delay: 0.8s; }
+.contacto-cards .card:nth-child(5) { animation-delay: 1s; }
+
+.contacto-cards .card span {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 10px;
+    animation: pulseContacto 2s infinite;
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px);}
+    100% { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes pulseContacto {
+    0%, 100% { transform: scale(1);}
+    50% { transform: scale(1.15);}
+}
+
+.contacto-cards .card:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}

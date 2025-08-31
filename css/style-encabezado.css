@@ -4,7 +4,7 @@
     position: relative;           /* necesario para iconos flotantes */
     text-align: center;
     padding: 50px 20px;
-    background: #2f1738; /* negro oscuro */
+    background: #2f1738; 
     color: white;
     overflow: hidden;            /* oculta iconos fuera del contenedor */
 }

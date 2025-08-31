@@ -5,9 +5,20 @@ body {
     padding: 0;
     line-height: 1.6;
     background: #ffffff; 
-    background: #ffffff; 
 
 }
+
+/* Fondo Canvas */
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Para que quede detrás del contenido */
+    background: #000; /* Fondo base */
+}
+
 
 /* =================== TITULOS DE LAS SECCIONES =================== */
 section {
@@ -35,7 +46,7 @@ ul li {
 /* =================== FOOTER/DERECHOS =================== */
 footer {
     text-align: center;
-    background: #071538;
+    background: #2f1738;
     color: white;
     padding: 30px 20px;
 }

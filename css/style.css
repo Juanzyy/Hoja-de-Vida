@@ -4,22 +4,45 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background: #f0f4f8;
-    color: #333;
+    background: #ffffff; 
+    background: #180424; 
+
 }
 
 /* Encabezado */
 .presentacion {
+    position: relative;           /* necesario para iconos flotantes */
     text-align: center;
     padding: 50px 20px;
-    background: linear-gradient(135deg, #00bcd4, #ff3366);
+    background: #2f1738; /* negro oscuro */
     color: white;
+    overflow: hidden;            /* oculta iconos fuera del contenedor */
+    border-radius: 15px;
 }
 
+/* Fondo con iconos flotantes */
+.presentacion .fondo-ico {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    pointer-events: none;        /* no bloquea mouse */
+    z-index: 0;
+}
+
+.presentacion .fondo-ico .icono {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transition: transform 0.1s ease;
+}
+
+/* Foto de perfil */
 .presentacion .foto {
-    position: relative;
+    position: relative;           /* arriba del fondo */
     display: inline-block;
     margin-bottom: 20px;
+    z-index: 2;                   /* por encima del fondo */
 }
 
 .presentacion .foto img {
@@ -37,6 +60,24 @@ body {
 
 .presentacion .foto img:hover {
     transform: scale(1.08) rotate(-2deg);
+}
+
+/* Información principal */
+.presentacion .info-principal {
+    position: relative;           /* sobre el fondo */
+    z-index: 2;
+}
+
+.presentacion .info-principal h1 {
+    margin: 10px 0 5px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.presentacion .info-principal h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 /* Botones */
@@ -124,32 +165,166 @@ body {
     text-decoration: underline;
 }
 
+/* ESTUDIOOOS */
+#educacion h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    color: #ff416c; /* color más llamativo */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Línea decorativa debajo del título */
+#educacion h3::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, #ff4b2b, #ff416c);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Animación al aparecer */
+#educacion h3 {
+    animation: fadeInDown 1s ease forwards;
+}
+
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Contenedor de estudios */
 .estudios {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
 }
 
+/* Tarjeta de cada estudio */
 .card-estudio {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    width: 260px;
+    text-align: center;
     background: #fff;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
 }
 
-.card-estudio:hover {
-    transform: translateY(-5px);
+/* Animación individual para cada tarjeta */
+.card-estudio:nth-child(1) { animation-delay: 0.2s; }
+.card-estudio:nth-child(2) { animation-delay: 0.4s; }
+/* Agregar más si hay más tarjetas */
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Imagen de la institución */
+.card-estudio .img-box {
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .card-estudio img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease;
+    border-radius: 12px;
+}
+
+.card-estudio:hover img {
+    transform: scale(1.1) rotate(-1deg);
+}
+
+/* Información del estudio */
+.info-estudio {
+    margin-top: 15px;
+}
+
+.info-estudio h4 {
+    font-size: 1.2rem;
+    color: #00bcd4;
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+}
+
+.info-estudio h4::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    margin: 5px auto 0;
+    border-radius: 2px;
+}
+
+/* Badge de periodo académico */
+.info-estudio .badge {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Descripción del estudio */
+.info-estudio p {
+    font-size: 0.95rem;
+    color: #555;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Efecto hover en la tarjeta */
+.card-estudio:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+
+/* Contenedor de barra */
+.progreso {
+    width: 100%;
+    height: 12px;
+    background: #e0e0e0;
     border-radius: 10px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+/* Barra de progreso interna */
+.progreso-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    border-radius: 10px 0 0 10px;
+    transition: width 1s ease;
+}
+
+/* Texto de progreso */
+.progreso-text {
+    font-size: 0.85rem;
+    color: #555;
+    text-align: center;
+    margin-top: 4px;
 }
 
 
@@ -178,7 +353,7 @@ ul li {
 /* Footer */
 footer {
     text-align: center;
-    background: #222;
+    background: #071538;
     color: white;
     padding: 30px 20px;
 }

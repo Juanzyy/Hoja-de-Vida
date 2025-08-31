@@ -90,20 +90,26 @@
     </section>
 
     <!-- Perfil -->
-    <section id="perfil">
-        <h3>Perfil Profesional</h3>
-        <p>
-            Estudiante de Tecnología en Desarrollo de Software, con conocimientos en Python y gestión de bases de datos.
-            Soy una persona proactiva, entusiasta y con gran interés en aprender nuevas tecnologías, 
-            actualmente profundizando en HTML, CSS y React para el desarrollo de interfaces modernas. 
+    <section id="perfil" class="perfil-profesional">
+        <h3 class="titulo-perfil">
+            <span class="ico-perfil">💡</span>
+            <span class="texto-perfil">Perfil Profesional</span>
+        </h3>
+        <p class="descripcion-perfil">
+            Estudiante de <span class="resaltado">Tecnología en Desarrollo de Software</span>, con conocimientos en <span class="resaltado">Python</span> y gestión de <span class="resaltado">bases de datos</span>.
+            Soy una persona <span class="resaltado">proactiva</span>, <span class="resaltado">entusiasta</span> y con gran interés en aprender nuevas tecnologías, 
+            actualmente profundizando en <span class="resaltado">HTML</span>, <span class="resaltado">CSS</span> y <span class="resaltado">React</span> para el desarrollo de interfaces modernas. 
             Me motiva crecer en un entorno profesional donde pueda aplicar mis conocimientos y mi pasión por crear soluciones 
-            funcionales y atractivas. Extrovertido y comunicativo, con facilidad para trabajar en equipo y adaptarme a nuevos desafíos.
+            funcionales y atractivas. <span class="resaltado">Extrovertido</span> y <span class="resaltado">comunicativo</span>, con facilidad para trabajar en equipo y adaptarme a nuevos desafíos.
         </p>
     </section>
 
     <!-- Educación -->
     <section id="educacion">
-        <h3>Educación</h3>
+        <h3 class="titulo-educacion">
+            <span class="ico-edu">🎓</span>
+            EDUCACIÓN
+        </h3>
         <div class="estudios">
             <div class="card-estudio">
                 <div class="img-box">
@@ -113,9 +119,9 @@
                     <h4>Universidad del Valle - Sede Caicedonia</h4>
                     <p><span class="badge">2023 - 2026</span> Tecnología en Desarrollo de Software</p>
                     <div class="progreso">
-                        <div class="progreso-bar" style="width: 80%;"></div>
+                        <div class="progreso-bar" style="--progreso-width: 80%;"></div>
                     </div>
-                    <p class="progreso-text">80% completado</p>
+                    <div class="progreso-text">80%</div>
                 </div>
             </div>
 
@@ -127,9 +133,9 @@
                     <h4>Institución Educativa Bolivariano</h4>
                     <p><span class="badge">2023 - 2026</span> Bachiller</p>
                     <div class="progreso">
-                        <div class="progreso-bar" style="width: 100%;"></div>
+                      <div class="progreso-bar" style="--progreso-width: 100%;" data-completo="true"></div>
                     </div>
-                    <p class="progreso-text">100% completado</p>
+                    <div class="progreso-text">100%</div>
                 </div>
             </div>
         </div>

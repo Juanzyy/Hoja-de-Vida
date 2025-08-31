@@ -5,7 +5,7 @@ body {
     padding: 0;
     line-height: 1.6;
     background: #ffffff; 
-    background: #180424; 
+    background: #ffffff; 
 
 }
 
@@ -179,24 +179,55 @@ body {
 }
 
 /* Línea decorativa debajo del título */
-#educacion h3::after {
-    content: "";
-    display: block;
-    width: 60%;
-    height: 4px;
-    background: linear-gradient(90deg, #ff4b2b, #ff416c);
-    margin: 10px auto 0;
-    border-radius: 2px;
+.titulo-educacion {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    display: inline-block;
+    animation: fadeInDown 1s cubic-bezier(.77,0,.18,1);
 }
 
-/* Animación al aparecer */
-#educacion h3 {
-    animation: fadeInDown 1s ease forwards;
+.titulo-educacion .ico-edu {
+    font-size: 2.2rem;
+    vertical-align: middle;
+    margin-right: 12px;
+    animation: bounceEdu 1.2s infinite;
+    color: #ff416c; /* color fijo para el emoji */
+}
+
+.titulo-educacion .texto-edu {
+    background: linear-gradient(90deg, #ff416c, #00bcd4, #cddc39);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.titulo-educacion::after {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 5px;
+    background: linear-gradient(90deg, #ff416c, #00bcd4, #cddc39);
+    border-radius: 3px;
+    margin: 12px auto 0 auto;
+    animation: underlineGrow 1.2s cubic-bezier(.77,0,.18,1);
 }
 
 @keyframes fadeInDown {
-    0% { opacity: 0; transform: translateY(-20px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% { opacity: 0; transform: translateY(-40px);}
+    100% { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes bounceEdu {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-12px);}
+}
+
+@keyframes underlineGrow {
+    0% { width: 0; opacity: 0;}
+    100% { width: 70%; opacity: 1;}
 }
 
 /* Contenedor de estudios */
@@ -304,19 +335,62 @@ body {
 /* Contenedor de barra */
 .progreso {
     width: 100%;
-    height: 12px;
+    height: 16px;
     background: #e0e0e0;
     border-radius: 10px;
-    margin: 10px 0;
+    margin: 14px 0;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,188,212,0.10);
+    position: relative;
 }
 
-/* Barra de progreso interna */
+/* Barra de progreso interna mejorada */
 .progreso-bar {
     height: 100%;
-    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    background: linear-gradient(90deg, #ff416c, #ff4b2b, #00bcd4);
     border-radius: 10px 0 0 10px;
-    transition: width 1s ease;
+    box-shadow: 0 0 12px 2px #ff416c88;
+    position: relative;
+    overflow: visible;
+    animation: fillBar 1.2s cubic-bezier(.77,0,.18,1) forwards;
+    width: 0; /* Se animará con JS */
+}
+
+
+/* Efecto de brillo animado */
+.progreso-bar::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 30px;
+    background: linear-gradient(120deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 100%);
+    opacity: 0.7;
+    animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+    0% { left: -30px; }
+    100% { left: 100%; }
+}
+
+/* Animación de relleno */
+@keyframes fillBar {
+    0% { width: 0; }
+    100% { width: var(--progreso-width, 80%); }
+}
+
+/* Pulso al completar */
+.progreso-bar[data-completo="true"] {
+  /* primero se llena, luego hace el pulso con un delay de 1.2s */
+  animation: fillBar 1.2s cubic-bezier(.77,0,.18,1) forwards,
+             pulse 0.6s 1 1.2s;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 12px 2px #ff416c88; }
+    50% { box-shadow: 0 0 24px 8px #ff416c88; }
+    100% { box-shadow: 0 0 12px 2px #ff416c88; }
 }
 
 /* Texto de progreso */
@@ -325,6 +399,8 @@ body {
     color: #555;
     text-align: center;
     margin-top: 4px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 
@@ -362,3 +438,57 @@ footer {
 html {
     scroll-behavior: smooth;
 }
+
+/* Perfil Profesional */
+.perfil-profesional {
+    background: linear-gradient(90deg, #ee6969 0%, #5991e4 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0, 188, 212, 0.10);
+    padding: 32px 24px;
+    margin: 32px auto;
+    max-width: 900px;
+    animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1);
+}
+
+.titulo-perfil {
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    animation: fadeInDown 1s cubic-bezier(.77,0,.18,1);
+}
+
+.ico-perfil {
+    font-size: 2.1rem;
+    animation: bounceEdu 1.2s infinite;
+    color: #ff416c;
+}
+
+.texto-perfil {
+    background: linear-gradient(90deg, #000000, #69040d, #360366);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.descripcion-perfil {
+    font-size: 1.15rem;
+    color: #333;
+    line-height: 1.8;
+    animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1);
+}
+
+/* Cambia el color del texto en perfil profesional, excepto el resaltado */
+.perfil-profesional .descripcion-perfil {
+    color: #000000; /* Nuevo color para el texto principal */
+}
+
+.resaltado {
+    color: #470366;
+    font-weight: 600;
+    border-radius: 6px;
+    margin: 0 2px;
+}
+

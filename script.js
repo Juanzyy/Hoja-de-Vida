@@ -1,4 +1,4 @@
-// script.js
+// script.js animacion de iconos para el encabezado
 document.addEventListener('DOMContentLoaded', () => {
   const iconos = document.querySelectorAll('.presentacion .icono');
   const container = document.querySelector('.presentacion');

@@ -1,3 +1,55 @@
+/* =================== IDIOMAS =================== */
 #idiomas {
-    color: #ffffff; /* Verde neón */
+  padding: 50px 10%;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+#idiomas h3 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #ffcc00;
+  text-shadow: 0 0 10px #fffc66, 0 0 20px #335ccc;
+}
+
+.idiomas-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.idioma-card {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #2a3ffa;
+  border-radius: 15px;
+  padding: 20px 30px;
+  min-width: 180px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 15px rgba(255, 50, 150, 0.5);
+}
+
+.idioma-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 50, 150, 0.9);
+}
+
+.idioma-card .bandera {
+  width: 50px;
+  height: auto;
+  margin-bottom: 10px;
+}
+.idioma-card h4 {
+  font-size: 1.3rem;
+  color: #ffcc00;
+  margin-bottom: 5px;
+  text-shadow: 0 0 8px #ffcc00;
+}
+
+.idioma-card p {
+  font-size: 1rem;
+  color: #ddd;
 }

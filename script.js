@@ -1,6 +1,5 @@
 // script.js
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Fondo de iconos ---
   const iconos = document.querySelectorAll('.presentacion .icono');
   const container = document.querySelector('.presentacion');
 
@@ -10,15 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar iconos
     iconos.forEach(icono => {
-      icono.dataset.x = Math.random() * containerWidth;
-      icono.dataset.y = Math.random() * containerHeight;
+      resetIconPosition(icono);
       icono.dataset.vx = (Math.random() - 0.5) * 0.5;
       icono.dataset.vy = (Math.random() - 0.5) * 0.5;
       icono.dataset.size = 30 + Math.random() * 30;
+
+      // ✨ cada icono tendrá un "offset" respecto al cursor
+      icono.dataset.offsetX = (Math.random() - 0.5) * 100; 
+      icono.dataset.offsetY = (Math.random() - 0.5) * 100; 
+
+      // ✨ velocidad personalizada
+      icono.dataset.speed = 0.02 + Math.random() * 0.03;
+
       icono.style.width = icono.dataset.size + 'px';
       icono.style.height = icono.dataset.size + 'px';
-      icono.style.left = icono.dataset.x + 'px';
-      icono.style.top = icono.dataset.y + 'px';
+      icono.style.position = 'absolute';
     });
 
     let mouseX = null;
@@ -33,7 +38,21 @@ document.addEventListener('DOMContentLoaded', () => {
     container.addEventListener('mouseleave', () => {
       mouseX = null;
       mouseY = null;
+
+      // 🔥 Redistribuir con animación suave
+      iconos.forEach(icono => {
+        resetIconPosition(icono);
+      });
     });
+
+    function resetIconPosition(icono) {
+      const x = Math.random() * (containerWidth - 50);
+      const y = Math.random() * (containerHeight - 50);
+      icono.dataset.x = x;
+      icono.dataset.y = y;
+      icono.style.left = x + 'px';
+      icono.style.top = y + 'px';
+    }
 
     function animarIconos() {
       iconos.forEach(icono => {
@@ -41,13 +60,19 @@ document.addEventListener('DOMContentLoaded', () => {
         let y = parseFloat(icono.dataset.y);
         let vx = parseFloat(icono.dataset.vx);
         let vy = parseFloat(icono.dataset.vy);
+        let speed = parseFloat(icono.dataset.speed);
+        let offsetX = parseFloat(icono.dataset.offsetX);
+        let offsetY = parseFloat(icono.dataset.offsetY);
 
         if (mouseX !== null && mouseY !== null) {
-          x += (mouseX - x) * 0.03;
-          y += (mouseY - y) * 0.03;
+          // 👌 siguen al mouse pero con offset y suavidad
+          x += (mouseX + offsetX - x) * speed;
+          y += (mouseY + offsetY - y) * speed;
         } else {
+          // Se mueven libremente
           x += vx;
           y += vy;
+
           if (x < 0 || x > containerWidth - icono.offsetWidth) icono.dataset.vx = -vx;
           if (y < 0 || y > containerHeight - icono.offsetHeight) icono.dataset.vy = -vy;
         }
@@ -55,7 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
         icono.dataset.x = x;
         icono.dataset.y = y;
 
-        icono.style.transform = `translate(${x}px, ${y}px)`;
+        icono.style.left = x + 'px';
+        icono.style.top = y + 'px';
       });
 
       requestAnimationFrame(animarIconos);
@@ -64,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     animarIconos();
   }
 
-  // --- Barras de progreso ---
+  /* BARRA DE PROGRESO PARA LA SECCION DE EDUCACION */
   document.querySelectorAll('.progreso-bar').forEach(bar => {
     // Obtener el valor de la variable CSS correctamente (incluye inline y CSS)
     const porcentaje = getComputedStyle(bar).getPropertyValue('--progreso-width').trim();

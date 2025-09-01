@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="css/style-contacto.css">
     <link rel="stylesheet" href="css/style-perfil.css">
     <link rel="stylesheet" href="css/style-educacion.css">
+    <link rel="stylesheet" href="css/style-experiencia.css">
+    <link rel="stylesheet" href="css/style-habilidades.css">
+    <link rel="stylesheet" href="css/style-idiomas.css">
+    <link rel="stylesheet" href="css/style-referencias.css">
 </head>
 <body>
     <canvas id="background"></canvas>
@@ -63,7 +67,7 @@
     <!-- Botones de navegación -->
     <div class="botones">
         <a href="#perfil" class="boton-redondo boton-cv">Mi CV</a>
-        <a href="#experiencia" class="boton-redondo boton-trabajo">Mi Trabajo</a>
+        <a href="#proyectos" class="boton-redondo boton-trabajo">Mis Proyectos</a>
         <a href="#habilidades" class="boton-redondo boton-habilidades">Mis Habilidades</a>
     </div>
 
@@ -155,14 +159,33 @@
     </section>
 
 
-    <!-- Experiencia laboral -->
-    <section id="experiencia">
-        <h3>Experiencia Laboral</h3>
-        <ul>
-            <li><strong>Universidad</strong> – Prácticas académicas</li>
-            <li><strong>Universidad</strong> – Proyectos universitarios</li>
-        </ul>
-    </section>
+    <!-- Proyectos -->
+<section id="proyectos">
+    <h3>Mis Proyectos</h3>
+    <div class="galeria">
+        <div class="proyecto">
+            <img src="img\Local.jpg" alt="Proyecto 1">
+            <p>Landing page para un negocio local</p>
+        </div>
+        <div class="proyecto">
+            <video autoplay loop muted playsinline>
+                <source src="img/Entrevista.mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+
+            <!-- 👇 Imagen de relleno debajo del video -->
+            <a href="https://drive.google.com/file/d/1NyaQdADWYaU7zre5FIUXTk2aSURkI9KT/view?usp=drive_link" target="_blank">
+                <img src="img\U.jpg" alt="Fondo del video" class="relleno">
+            </a>
+            <p>Edición de video promocional</p>
+        </div>
+        <div class="proyecto">
+            <img src="img\Juego.jpg" alt="Proyecto 3">
+            <p>Desarrollo de un videojuego 2D</p>
+        </div>
+    </div>
+</section>
+
 
     <!-- Habilidades -->
     <section id="habilidades">

@@ -12,6 +12,23 @@
     color: #ffffff;
 }
 
+/* Título de habilidades con el icono */
+.titulo-habilidades {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.ico-habilidades {
+    font-size: 1.8rem;
+}
+
 /* Estrellas decorativas repartidas */
 #habilidades::before, 
 #habilidades::after {

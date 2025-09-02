@@ -1,0 +1,69 @@
+#proyectos {
+    color: #ffffff; /* Verde neón */
+}
+
+/* =================== PROYECTOS =================== */
+#proyectos {
+    padding: 50px 10%;
+    color: #fff;
+}
+
+#proyectos h3 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.proyecto {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+/* Imagenes */
+.proyecto img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover; /* Para que no se deformen */
+    border-bottom: 2px solid #ffcc00;
+    display: block;
+}
+
+/* Videos (ahora con el mismo estilo que las imágenes) */
+.proyecto video {
+    width: 100%;
+    aspect-ratio: 16 / 9;       /* 👈 igual que las imágenes */
+    object-fit: cover;    /* usa contain si no quieres cortes */
+    border-bottom: 2px solid #ffcc00;
+    display: block;
+    background: #000;     /* por si sobra espacio */
+}
+
+.proyecto p {
+    padding: 10px;
+    color: #ddd;
+}
+
+/* Efecto hover */
+.proyecto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 200, 0, 0.7);
+}
+
+.proyecto .relleno {
+    width: 100%;
+    height: 138px;         /* ajusta el tamaño que quieras para rellenar */
+    object-fit: cover;
+    display: block;
+    border-bottom: 2px solid #ffcc00;
+}

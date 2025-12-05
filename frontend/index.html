@@ -11,10 +11,9 @@
     <link rel="stylesheet" href="css/style-perfil.css">
     <link rel="stylesheet" href="css/style-educacion.css">
     <link rel="stylesheet" href="css/style-proyectos.css">
-    <link rel="stylesheet" href="css/style-experiencia.css">
+    <link rel="stylesheet" href="css/style-contactame.css">
     <link rel="stylesheet" href="css/style-habilidades.css">
     <link rel="stylesheet" href="css/style-idiomas.css">
-    <link rel="stylesheet" href="css/style-referencias.css">
 </head>
 <body>
     <canvas id="background"></canvas>
@@ -63,7 +62,7 @@
     </header>
 
     <!-- Conectar JS -->
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 
     <!-- Botones de navegación -->
     <div class="botones">
@@ -228,18 +227,27 @@
         </div>
     </section>
 
-    <!-- EXPERIENCIA -->
-    <section id="experiencia">
-        <h3>Experiencia</h3>
-        <p>Un año como desarrollador</p>
+    <!-- CONTACTAME -->
+    <section id="contacteme" class="seccion-contactame">
+        <h3>¿Tienes una idea? ¡Contactame!</h3>
+        <form class="formulario-contacto" id="formularioContacto">
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Tu Email" required>
+                </div>
+            </div>
+            <div class="form-group full-width">
+                <input type="text" id="asunto" name="asunto" placeholder="Asunto" required>
+            </div>
+            <div class="form-group full-width">
+                <textarea id="mensaje" name="mensaje" placeholder="Tu Mensaje" required></textarea>
+            </div>
+            <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+        </form>
     </section>
-
-    <!-- Referencias -->
-    <section id="referencias">
-        <h3>Referencias</h3>
-        <p>Disponibles a solicitud</p>
-    </section>
-
 
     <!-- Footer -->
     <footer>

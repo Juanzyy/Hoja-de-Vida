@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const path = require('path');
 const pool = require('./db');
 require('dotenv').config();
 
@@ -11,6 +12,9 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Servir archivos estáticos del frontend
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Configurar Nodemailer
 const transporter = nodemailer.createTransport({
@@ -231,6 +235,11 @@ app.get('/api/mensajes-pendientes', async (req, res) => {
 // Ruta de prueba
 app.get('/api/test', (req, res) => {
     res.json({ message: 'Backend funcionando correctamente' });
+});
+
+// Servir index.html para todas las rutas no-API (SPA fallback)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
 // Iniciar servidor

@@ -1,5 +1,6 @@
 // Variables globales
 const formularioContacto = document.getElementById('formularioContacto');
+const API_BASE_URL = window.API_BASE_URL || '';
 
 // Agregar evento al formulario
 if (formularioContacto) {
@@ -36,7 +37,7 @@ async function enviarMensaje(e) {
 
     try {
         // Enviar datos al servidor
-        const response = await fetch('http://localhost:3000/api/contacto', {
+        const response = await fetch(`${API_BASE_URL}/api/contacto`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,10 +53,14 @@ async function enviarMensaje(e) {
         const data = await response.json();
 
         if (response.ok && data.success) {
-            mostrarAlerta('¡Mensaje enviado exitosamente!', 'success');
+            if (data.warning) {
+                mostrarAlerta(data.message || data.warning, 'warning');
+            } else {
+                mostrarAlerta('¡Mensaje enviado exitosamente!', 'success');
+            }
             formularioContacto.reset();
         } else {
-            mostrarAlerta(data.message || 'Error al enviar el mensaje', 'error');
+            mostrarAlerta(data.message || `Error al enviar el mensaje (${response.status})`, 'error');
         }
     } catch (error) {
         console.error('Error:', error);
@@ -82,9 +87,11 @@ function mostrarAlerta(mensaje, tipo) {
         font-weight: 600;
         z-index: 9999;
         animation: slideInRight 0.3s ease;
-        ${tipo === 'success' 
-            ? 'background: #4caf50; color: white;' 
-            : 'background: #f44336; color: white;'
+        ${tipo === 'success'
+            ? 'background: #4caf50; color: white;'
+            : tipo === 'warning'
+                ? 'background: #ff9800; color: white;'
+                : 'background: #f44336; color: white;'
         }
     `;
 

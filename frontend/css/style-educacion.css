@@ -119,6 +119,9 @@
 /* Información textual */
 .info-estudio {
     margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .info-estudio h4 {
@@ -158,6 +161,12 @@
     color: #555;
     text-align: center;
     margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-height: 3.6em;
+    justify-content: center;
 }
 
 /* Efecto hover completo de la tarjeta */

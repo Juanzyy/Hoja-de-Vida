@@ -72,6 +72,9 @@ app.post('/api/contacto', async (req, res) => {
 
         const mensajeId = result.rows[0].id;
 
+        // Confirmar el guardado antes de intentar enviar correos.
+        await client.query('COMMIT');
+
         // Enviar email al propietario del sitio
         const mailOptions = {
             from: process.env.EMAIL_USER,
@@ -111,18 +114,25 @@ app.post('/api/contacto', async (req, res) => {
             `
         };
 
-        // Enviar ambos emails
-        await transporter.sendMail(mailOptions);
-        await transporter.sendMail(confirmationMailOptions);
+        // Enviar correos sin comprometer el guardado del mensaje.
+        try {
+            await transporter.sendMail(mailOptions);
+            await transporter.sendMail(confirmationMailOptions);
 
-        // Confirmar transacción
-        await client.query('COMMIT');
-
-        res.status(200).json({
-            success: true,
-            message: 'Tu mensaje ha sido enviado exitosamente',
-            messageId: mensajeId
-        });
+            res.status(200).json({
+                success: true,
+                message: 'Tu mensaje ha sido enviado exitosamente',
+                messageId: mensajeId
+            });
+        } catch (mailError) {
+            console.error('Error enviando correos:', mailError);
+            res.status(200).json({
+                success: true,
+                message: 'Tu mensaje fue recibido y guardado, pero no se pudo enviar el correo de notificación.',
+                warning: 'El envío de correo falló',
+                messageId: mensajeId
+            });
+        }
 
     } catch (error) {
         // Revertir transacción en caso de error

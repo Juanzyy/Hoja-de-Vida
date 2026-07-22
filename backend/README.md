@@ -107,3 +107,33 @@ Verifica que el servidor esté funcionando
 - Asegúrate de que el frontend envíe las solicitudes a `http://localhost:3000/api/contacto`
 - Para producción, actualiza la URL del servidor en `frontend/js/script.js`
 
+## Despliegue en Railway
+
+Este proyecto está listo para Railway como una sola aplicación Node.js.
+
+### Configuración recomendada
+
+- **Root directory:** `backend`
+- **Build command:** `npm install`
+- **Start command:** `npm start`
+
+### Variables de entorno
+
+Configura estas variables en Railway:
+
+- `PORT` = Railway la asigna automáticamente, no hace falta fijarla manualmente
+- `DB_USER`
+- `DB_PASSWORD`
+- `DB_HOST`
+- `DB_PORT`
+- `DB_NAME`
+- `EMAIL_SERVICE`
+- `EMAIL_USER`
+- `EMAIL_PASSWORD`
+- `EMAIL_RECIPIENT`
+
+### Importante
+
+- El backend ya sirve el frontend desde `../frontend`, así que no necesitas desplegar la carpeta `frontend` por separado si usas esta arquitectura.
+- Si cambias el frontend para consumir una URL distinta, usa `window.API_BASE_URL` en `frontend/js/script.js`.
+

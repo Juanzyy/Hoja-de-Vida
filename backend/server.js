@@ -166,7 +166,8 @@ app.post('/api/contacto', async (req, res) => {
         console.error('Error:', error);
         res.status(500).json({
             success: false,
-            message: 'Error al enviar el mensaje. Intenta más tarde.'
+            message: 'Error al enviar el mensaje. Intenta más tarde.',
+            detail: error.message
         });
     }
 });

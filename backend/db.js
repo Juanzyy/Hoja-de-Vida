@@ -73,21 +73,30 @@ pool.on('error', (err) => {
     console.error('Error en pool de conexiones:', err);
 });
 
+async function initializeDatabase() {
+    const client = await pool.connect();
+
+    try {
+        await client.query(schemaSql);
+        console.log('✓ Esquema de base de datos inicializado correctamente');
+    } finally {
+        client.release();
+    }
+}
+
 // Función para conectar a la BD
 pool.connect((err, client, release) => {
     if (err) {
         console.error('Error conectando a PostgreSQL:', err);
     } else {
         console.log('✓ Conectado a PostgreSQL exitosamente');
-        client.query(schemaSql)
-            .catch(schemaError => {
-                console.error('Error inicializando esquema:', schemaError);
-            })
-            .finally(() => {
-                release();
-            });
+        release();
+        initializeDatabase().catch(schemaError => {
+            console.error('Error inicializando esquema:', schemaError);
+        });
     }
 });
 
 // Exportar pool
 module.exports = pool;
+module.exports.initializeDatabase = initializeDatabase;

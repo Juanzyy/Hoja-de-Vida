@@ -1,0 +1,9 @@
+{
+  "name": "hoja-de-vida",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm start --prefix backend",
+    "build": "npm install --prefix backend"
+  }
+}

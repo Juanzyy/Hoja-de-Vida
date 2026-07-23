@@ -45,9 +45,10 @@ const transporter = nodemailer.createTransport({
 
 // Ruta para recibir mensajes del formulario
 app.post('/api/contacto', async (req, res) => {
-    const client = await pool.connect();
-    
+    let client;
+
     try {
+        client = await pool.connect();
         const { nombre, email, asunto, mensaje } = req.body;
         const ipOrigen = req.ip || req.connection.remoteAddress;
         const userAgent = req.headers['user-agent'];
@@ -154,14 +155,19 @@ app.post('/api/contacto', async (req, res) => {
 
     } catch (error) {
         // Revertir transacción en caso de error
-        await client.query('ROLLBACK');
+        if (client) {
+            try {
+                await client.query('ROLLBACK');
+            } catch {}
+            try {
+                client.release();
+            } catch {}
+        }
         console.error('Error:', error);
         res.status(500).json({
             success: false,
             message: 'Error al enviar el mensaje. Intenta más tarde.'
         });
-    } finally {
-        client.release();
     }
 });
 

@@ -8,13 +8,31 @@ require('dotenv').config();
 
 const app = express();
 
+const frontendCandidates = [
+    path.join(__dirname, '../frontend'),
+    path.join(process.cwd(), 'frontend'),
+    path.join(__dirname, '../../frontend')
+];
+
+const frontendRoot = frontendCandidates.find(candidate => {
+    try {
+        return require('fs').existsSync(path.join(candidate, 'index.html'));
+    } catch {
+        return false;
+    }
+});
+
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Servir archivos estáticos del frontend
-app.use(express.static(path.join(__dirname, '../frontend')));
+if (frontendRoot) {
+    app.use(express.static(frontendRoot));
+} else {
+    console.warn('No se encontró el frontend para servir archivos estáticos.');
+}
 
 // Configurar Nodemailer
 const transporter = nodemailer.createTransport({
@@ -249,7 +267,11 @@ app.get('/api/test', (req, res) => {
 
 // Servir index.html para todas las rutas no-API (SPA fallback)
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/index.html'));
+    if (frontendRoot) {
+        res.sendFile(path.join(frontendRoot, 'index.html'));
+    } else {
+        res.status(404).send('Frontend no encontrado');
+    }
 });
 
 // Iniciar servidor

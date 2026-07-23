@@ -131,9 +131,13 @@ Configura estas variables en Railway:
 - `EMAIL_USER`
 - `EMAIL_PASSWORD`
 - `EMAIL_RECIPIENT`
+- `EMAIL_PROVIDER` = `gmail` o `resend`
+- `EMAIL_FROM` = remitente visible, opcional
+- `RESEND_API_KEY` = solo si usas Resend
 
 ### Importante
 
 - El backend ya sirve el frontend desde `../frontend`, así que no necesitas desplegar la carpeta `frontend` por separado si usas esta arquitectura.
 - Si cambias el frontend para consumir una URL distinta, usa `window.API_BASE_URL` en `frontend/js/script.js`.
+- Para correos, `Resend` suele ser más estable que Gmail cuando ya hubo timeouts SMTP.
 

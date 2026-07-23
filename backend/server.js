@@ -7,6 +7,8 @@ const pool = require('./db');
 require('dotenv').config();
 
 const app = express();
+const emailProvider = (process.env.EMAIL_PROVIDER || 'gmail').toLowerCase();
+const emailFrom = process.env.EMAIL_FROM || 'Hoja de Vida <onboarding@resend.dev>';
 
 const frontendCandidates = [
     path.join(__dirname, '../frontend'),
@@ -42,6 +44,37 @@ const transporter = nodemailer.createTransport({
         pass: process.env.EMAIL_PASSWORD
     }
 });
+
+async function sendEmail(options) {
+    if (emailProvider === 'resend') {
+        if (!process.env.RESEND_API_KEY) {
+            throw new Error('Falta RESEND_API_KEY');
+        }
+
+        const response = await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${process.env.RESEND_API_KEY}`
+            },
+            body: JSON.stringify({
+                from: options.from,
+                to: Array.isArray(options.to) ? options.to : [options.to],
+                subject: options.subject,
+                html: options.html
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Resend error: ${response.status} ${errorText}`);
+        }
+
+        return response.json();
+    }
+
+    return transporter.sendMail(options);
+}
 
 // Ruta para recibir mensajes del formulario
 app.post('/api/contacto', async (req, res) => {
@@ -96,7 +129,7 @@ app.post('/api/contacto', async (req, res) => {
 
         // Enviar email al propietario del sitio
         const mailOptions = {
-            from: process.env.EMAIL_USER,
+            from: emailFrom,
             to: process.env.EMAIL_RECIPIENT || process.env.EMAIL_USER,
             subject: `Nuevo mensaje de contacto (#${mensajeId}): ${asunto}`,
             html: `
@@ -115,7 +148,7 @@ app.post('/api/contacto', async (req, res) => {
 
         // Enviar email de confirmación al usuario
         const confirmationMailOptions = {
-            from: process.env.EMAIL_USER,
+            from: emailFrom,
             to: email,
             subject: 'Hemos recibido tu mensaje',
             html: `
@@ -135,8 +168,8 @@ app.post('/api/contacto', async (req, res) => {
 
         // Enviar correos sin comprometer el guardado del mensaje.
         try {
-            await transporter.sendMail(mailOptions);
-            await transporter.sendMail(confirmationMailOptions);
+            await sendEmail(mailOptions);
+            await sendEmail(confirmationMailOptions);
 
             res.status(200).json({
                 success: true,
